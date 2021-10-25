@@ -22,7 +22,7 @@ const sketch = ({ context, canvas }) => {
   const gui = new GUI();
 
   const options = {
-    enableCameraSwoop: true,
+    enableCameraSwoop: false,
   };
 
   // Setup
@@ -63,7 +63,7 @@ const sketch = ({ context, canvas }) => {
   // ---
 
   gui.add(options, "enableCameraSwoop").onChange((val) => {
-    controls.enabled = val;
+    controls.enabled = !val;
     controls.reset();
   });
 
