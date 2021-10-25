@@ -1,0 +1,28 @@
+{
+  "name": "threejs-canvas-sketch",
+  "version": "1.0.0",
+  "description": "A three.js scene running in canvas-sketch",
+  "main": "index.html",
+  "scripts": {
+    "start": "canvas-sketch src/index.js --hot",
+    "build": "canvas-sketch src/index.js --build --inline"
+  },
+  "dependencies": {
+    "canvas-sketch": "0.7.4",
+    "canvas-sketch-cli": "1.11.14",
+    "canvas-sketch-util": "1.10.0",
+    "stats-js": "1.0.1",
+    "three": "0.133.1"
+  },
+  "devDependencies": {
+    "@types/three": "0.93.13"
+  },
+  "keywords": [
+    "webgl",
+    "three",
+    "three.js",
+    "canvas-sketch",
+    "template",
+    "threejs"
+  ]
+}
