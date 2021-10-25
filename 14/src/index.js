@@ -69,7 +69,7 @@ const sketch = ({ context, canvas, width, height }) => {
   bloomPass.strength = options.bloomStrength;
   bloomPass.radius = options.bloomRadius;
 
-  composer = new THREE.EffectComposer(renderer);
+  const composer = new THREE.EffectComposer(renderer);
   composer.addPass(renderPass);
   composer.addPass(bloomPass);
 
