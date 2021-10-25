@@ -24,7 +24,7 @@ const sketch = ({ context, canvas }) => {
   const gui = new GUI();
 
   const options = {
-    enableControls: true,
+    enableCameraSwoop: true,
     enableRotation: true,
     transmission: 1,
     thickness: 1,
@@ -41,7 +41,7 @@ const sketch = ({ context, canvas }) => {
   camera.position.set(0, 0, 5);
 
   const controls = new THREE.OrbitControls(camera, canvas);
-  controls.enabled = options.enableControls;
+  controls.enabled = !options.enableCameraSwoop;
 
   const scene = new THREE.Scene();
 
@@ -110,7 +110,7 @@ const sketch = ({ context, canvas }) => {
   // ---
 
   gui
-    .add(options, "enableControls")
+    .add(options, "enableCameraSwoop")
     .name("Enable controls")
     .onChange((val) => {
       controls.enabled = val;
@@ -162,7 +162,7 @@ const sketch = ({ context, canvas }) => {
       });
     }
 
-    if (!options.enableControls) {
+    if (options.enableCameraSwoop) {
       camera.position.x = Math.sin((time / 10) * Math.PI * 2) * 2;
       camera.position.y = Math.cos((time / 10) * Math.PI * 2) * 2;
       camera.position.z = 4;
