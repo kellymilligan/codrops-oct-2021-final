@@ -22,7 +22,7 @@ const sketch = ({ context, canvas }) => {
   const gui = new GUI();
 
   const options = {
-    enableControls: true,
+    enableControls: false,
   };
 
   // Setup

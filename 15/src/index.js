@@ -31,7 +31,7 @@ const sketch = ({ context, canvas, width, height }) => {
   const gui = new GUI();
 
   const options = {
-    enableControls: true,
+    enableControls: false,
     enableRotation: false,
     color: 0xffffff,
     metalness: 0,

@@ -30,7 +30,7 @@ const sketch = ({ context, canvas, width, height }) => {
   const gui = new GUI();
 
   const options = {
-    enableControls: true,
+    enableControls: false,
     enableRotation: true,
     transmission: 1,
     thickness: 1.2,
