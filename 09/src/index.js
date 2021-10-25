@@ -111,7 +111,7 @@ const sketch = ({ context, canvas }) => {
 
   gui
     .add(options, "enableCameraSwoop")
-    .name("Enable controls")
+    .name("Enable camera swoop")
     .onChange((val) => {
       controls.enabled = val;
       controls.reset();
