@@ -122,48 +122,30 @@ const sketch = ({ context, canvas }) => {
   // GUI
   // ---
 
-  gui
-    .add(options, "enableCameraSwoop")
-    .name("Enable camera swoop")
-    .onChange((val) => {
-      controls.enabled = val;
-      controls.reset();
-    });
+  gui.add(options, "enableCameraSwoop").onChange((val) => {
+    controls.enabled = val;
+    controls.reset();
+  });
 
-  gui
-    .add(options, "enableRotation")
-    .name("Enable rotation")
-    .onChange(() => {
-      meshes.forEach((mesh) => mesh.rotation.set(0, 0, 0));
-    });
+  gui.add(options, "enableRotation").onChange(() => {
+    meshes.forEach((mesh) => mesh.rotation.set(0, 0, 0));
+  });
 
-  gui
-    .add(options, "transmission", 0, 1, 0.01)
-    .name("Transmission")
-    .onChange((val) => {
-      material.transmission = val;
-    });
+  gui.add(options, "transmission", 0, 1, 0.01).onChange((val) => {
+    material.transmission = val;
+  });
 
-  gui
-    .add(options, "thickness", 0, 5, 0.1)
-    .name("Thickness")
-    .onChange((val) => {
-      material.thickness = val;
-    });
+  gui.add(options, "thickness", 0, 5, 0.1).onChange((val) => {
+    material.thickness = val;
+  });
 
-  gui
-    .add(options, "roughness", 0, 1, 0.01)
-    .name("Roughness")
-    .onChange((val) => {
-      material.roughness = val;
-    });
+  gui.add(options, "roughness", 0, 1, 0.01).onChange((val) => {
+    material.roughness = val;
+  });
 
-  gui
-    .add(options, "envMapIntensity", 0, 3, 0.1)
-    .name("Env Map Intensity")
-    .onChange((val) => {
-      material.envMapIntensity = val;
-    });
+  gui.add(options, "envMapIntensity", 0, 3, 0.1).onChange((val) => {
+    material.envMapIntensity = val;
+  });
 
   // Update
   // ------

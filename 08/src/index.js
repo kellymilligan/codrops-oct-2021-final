@@ -62,13 +62,10 @@ const sketch = ({ context, canvas }) => {
   // GUI
   // ---
 
-  gui
-    .add(options, "enableCameraSwoop")
-    .name("Enable camera swoop")
-    .onChange((val) => {
-      controls.enabled = val;
-      controls.reset();
-    });
+  gui.add(options, "enableCameraSwoop").onChange((val) => {
+    controls.enabled = val;
+    controls.reset();
+  });
 
   // Update
   // ------
