@@ -35,7 +35,7 @@ const sketch = ({ context, canvas }) => {
   camera.position.set(0, 0, 5);
 
   const controls = new THREE.OrbitControls(camera, canvas);
-  controls.enabled = false;
+  controls.enabled = !options.enableSwoopingCamera;
 
   const scene = new THREE.Scene();
 
@@ -110,6 +110,7 @@ const sketch = ({ context, canvas }) => {
       material.dispose();
       controls.dispose();
       renderer.dispose();
+      gui.destroy();
     },
   };
 };

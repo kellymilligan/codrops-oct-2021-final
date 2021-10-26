@@ -9,6 +9,7 @@ global.THREE = THREE;
 require("three/examples/js/controls/OrbitControls");
 
 const Stats = require("stats-js");
+const { GUI } = require("dat.gui");
 
 const settings = {
   animate: true,
@@ -18,6 +19,11 @@ const settings = {
 const sketch = ({ context, canvas }) => {
   const stats = new Stats();
   document.body.appendChild(stats.dom);
+  const gui = new GUI();
+
+  const options = {
+    enableSwoopingCamera: false,
+  };
 
   // Setup
   // -----
@@ -29,6 +35,7 @@ const sketch = ({ context, canvas }) => {
   camera.position.set(0, 0, 5);
 
   const controls = new THREE.OrbitControls(camera, canvas);
+  controls.enabled = !options.enableSwoopingCamera;
 
   const scene = new THREE.Scene();
 
@@ -57,10 +64,18 @@ const sketch = ({ context, canvas }) => {
   light.position.set(0, 5, 10);
   scene.add(light);
 
+  // GUI
+  // ---
+
+  gui.add(options, "enableSwoopingCamera").onChange((val) => {
+    controls.enabled = !val;
+    controls.reset();
+  });
+
   // Update
   // ------
 
-  const update = (deltaTime) => {
+  const update = (time, deltaTime) => {
     const ROTATE_TIME = 30; // Time in seconds for a full rotation
     const xAxis = new THREE.Vector3(1, 0, 0);
     const yAxis = new THREE.Vector3(0, 1, 0);
@@ -69,6 +84,13 @@ const sketch = ({ context, canvas }) => {
 
     mesh.rotateOnWorldAxis(xAxis, rotateX);
     mesh.rotateOnWorldAxis(yAxis, rotateY);
+
+    if (options.enableSwoopingCamera) {
+      camera.position.x = Math.sin((time / 10) * Math.PI * 2) * 3;
+      camera.position.y = Math.cos((time / 10) * Math.PI * 2) * 3;
+      camera.position.z = 4;
+      camera.lookAt(scene.position);
+    }
   };
 
   // Lifecycle
@@ -84,7 +106,7 @@ const sketch = ({ context, canvas }) => {
     render({ time, deltaTime }) {
       stats.begin();
       controls.update();
-      update(deltaTime);
+      update(time, deltaTime);
       renderer.render(scene, camera);
       stats.end();
     },
@@ -93,6 +115,7 @@ const sketch = ({ context, canvas }) => {
       material.dispose();
       controls.dispose();
       renderer.dispose();
+      gui.destroy();
     },
   };
 };
