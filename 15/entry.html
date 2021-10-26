@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, shrink-to-fit=0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" >
+		<title>Creating the Effect of Transparent Glass and Plastic in Three.js | Demo | Codrops</title>
+		<meta name="description" content="Learn how to create convincing transparent, glass-like and plastic-like materials in Three.js. " />
+		<meta name="keywords" content="three.js, glass, plastic, effect, material, webgl" />
+		<meta name="author" content="Kelly Milligan for Codrops" />
+		<link rel="shortcut icon" href="../favicon.ico">
+		<style>
+			*,
+			*::after,
+			*::before {
+				box-sizing: border-box;
+			}
+
+			:root {
+				font-size: 15px;
+			}
+
+			html,
+			body,
+			main {
+				width: 100%;
+				height: 100%;
+				margin: 0;
+			}
+
+			body {
+				margin: 0;
+				--color-text: #111;
+				--color-bg: #fff;
+				--color-link: #aaa;
+				--color-link-hover: #000;
+				color: var(--color-text);
+				background-color: var(--color-bg);
+				font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
+			}
+
+			a {
+				text-decoration: none;
+				color: var(--color-link);
+				outline: none;
+			}
+
+			a:hover {
+				color: var(--color-link-hover);
+				outline: none;
+			}
+
+			/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
+			a:focus {
+				/* Provide a fallback style for browsers
+			 that don't support :focus-visible */
+				outline: none;
+				background: lightgrey;
+			}
+
+			a:focus:not(:focus-visible) {
+				/* Remove the focus indicator on mouse-focus for browsers
+			 that do support :focus-visible */
+				background: transparent;
+			}
+
+			a:focus-visible {
+				/* Draw a very noticeable focus style for
+			 keyboard-focus on browsers that do support
+			 :focus-visible */
+				outline: 2px solid red;
+				background: transparent;
+			}
+
+			main {
+				position: relative;
+			}
+
+			.frame {
+				padding: 2rem;
+				text-align: center;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+			}
+
+			.frame__title {
+				font-size: 1rem;
+				margin: 0 0 1rem;
+				font-weight: normal;
+			}
+
+			.frame__links a:not(:last-child) {
+				margin-right: 1rem;
+			}
+	</style>
+		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
+		<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
+	</head>
+	<body class="demo-1">
+		<main>
+			<div class="frame">
+				<div class="frame__title-wrap">
+					<h1 class="frame__title">Glass Effect in Three.js</h1>
+					<p class="frame__tagline">Read the <a href="https://tympanus.net/codrops/?p=57089">tutorial</a></p>
+				</div>
+				<nav class="frame__links">
+					<a href="http://tympanus.net/Development/RepetitiveTypography/">Previous demo</a>
+					<a href="https://github.com/kellymilligan/codrops-oct-2021-final">GitHub</a>
+				</nav>
+			</div>
+			<div class="content">
+				<!-- the content -->
+			</div>
+		</main>
+		{{entry}}
+		<script src="https://tympanus.net/codrops/adpacks/cda.js"></script>
+	</body>
+</html>
