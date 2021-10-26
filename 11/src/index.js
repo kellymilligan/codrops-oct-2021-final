@@ -205,6 +205,7 @@ const sketch = ({ context, canvas }) => {
     unload() {
       geometries.forEach((geometry) => geometry.dispose());
       material.dispose();
+      hdrEquirect.dispose();
       controls.dispose();
       renderer.dispose();
       gui.destroy();

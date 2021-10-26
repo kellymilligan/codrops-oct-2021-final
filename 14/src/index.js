@@ -270,6 +270,7 @@ const sketch = ({ context, canvas, width, height }) => {
     unload() {
       geometry.dispose();
       material.dispose();
+      hdrEquirect.dispose();
       controls.dispose();
       renderer.dispose();
       bloomPass.dispose();
