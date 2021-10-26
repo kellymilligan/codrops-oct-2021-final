@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "start": "canvas-sketch src/index.js --hot",
-    "build": "canvas-sketch src/index.js --build --inline"
+    "build": "canvas-sketch src/index.js --build --inline --name output --output=./output"
   },
   "dependencies": {
     "canvas-sketch": "0.7.4",
