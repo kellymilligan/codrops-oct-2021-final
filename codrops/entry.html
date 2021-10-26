@@ -29,10 +29,10 @@
 
 			body {
 				margin: 0;
-				--color-text: #111;
-				--color-bg: #fff;
+				--color-text: #fff;
+				--color-bg: #111;
 				--color-link: #aaa;
-				--color-link-hover: #000;
+				--color-link-hover: #ccc;
 				color: var(--color-text);
 				background-color: var(--color-bg);
 				font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
@@ -75,6 +75,8 @@
 
 			main {
 				position: relative;
+				z-index: 1;
+				pointer-events: none;
 			}
 
 			.frame {
@@ -83,6 +85,7 @@
 				position: absolute;
 				bottom: 0;
 				left: 0;
+				pointer-events: auto;
 			}
 
 			.frame__title {
@@ -94,11 +97,18 @@
 			.frame__links a:not(:last-child) {
 				margin-right: 1rem;
 			}
+
+			canvas {
+				position: absolute;
+				left: 0;
+				top: 0;
+			}
 	</style>
 		<script>document.documentElement.className="js";var supportsCssVars=function(){var e,t=document.createElement("style");return t.innerHTML="root: { --tmp-var: bold; }",document.head.appendChild(t),e=!!(window.CSS&&window.CSS.supports&&window.CSS.supports("font-weight","var(--tmp-var)")),t.parentNode.removeChild(t),e};supportsCssVars()||alert("Please view this demo in a modern browser that supports CSS Variables.");</script>
 		<script src="//tympanus.net/codrops/adpacks/analytics.js"></script>
 	</head>
 	<body class="demo-1">
+		{{entry}}
 		<main>
 			<div class="frame">
 				<div class="frame__title-wrap">
@@ -114,7 +124,6 @@
 				<!-- the content -->
 			</div>
 		</main>
-		{{entry}}
 		<script src="https://tympanus.net/codrops/adpacks/cda.js"></script>
 	</body>
 </html>
