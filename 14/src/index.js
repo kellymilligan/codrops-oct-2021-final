@@ -22,6 +22,7 @@ const { GUI } = require("dat.gui");
 const settings = {
   animate: true,
   context: "webgl",
+  resizeCanvas: false,
 };
 
 const sketch = ({ context, canvas, width, height }) => {
@@ -64,10 +65,12 @@ const sketch = ({ context, canvas, width, height }) => {
   const scene = new THREE.Scene();
 
   const renderPass = new THREE.RenderPass(scene, camera);
-  const bloomPass = new THREE.UnrealBloomPass(new THREE.Vector2(width, height));
-  bloomPass.threshold = options.bloomThreshold;
-  bloomPass.strength = options.bloomStrength;
-  bloomPass.radius = options.bloomRadius;
+  const bloomPass = new THREE.UnrealBloomPass(
+    new THREE.Vector2(width, height),
+    options.bloomStrength,
+    options.bloomRadius,
+    options.bloomThreshold
+  );
 
   const composer = new THREE.EffectComposer(renderer);
   composer.addPass(renderPass);
@@ -250,12 +253,22 @@ const sketch = ({ context, canvas, width, height }) => {
   // ---------
 
   return {
-    resize({ pixelRatio, viewportWidth, viewportHeight }) {
+    resize({ canvas, pixelRatio, viewportWidth, viewportHeight }) {
       const dpr = Math.min(pixelRatio, 2); // Cap DPR scaling to 2x
+
+      canvas.width = viewportWidth * dpr;
+      canvas.height = viewportHeight * dpr;
+      canvas.style.width = viewportWidth + "px";
+      canvas.style.height = viewportHeight + "px";
+
+      bloomPass.resolution.set(viewportWidth, viewportHeight);
+
       renderer.setPixelRatio(dpr);
       renderer.setSize(viewportWidth, viewportHeight);
+
       composer.setPixelRatio(dpr);
       composer.setSize(viewportWidth, viewportHeight);
+
       camera.aspect = viewportWidth / viewportHeight;
       camera.updateProjectionMatrix();
     },
@@ -275,6 +288,7 @@ const sketch = ({ context, canvas, width, height }) => {
       renderer.dispose();
       bloomPass.dispose();
       gui.destroy();
+      document.body.removeChild(stats.dom);
     },
   };
 };

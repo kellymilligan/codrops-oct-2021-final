@@ -13,6 +13,7 @@ const Stats = require("stats-js");
 const settings = {
   animate: true,
   context: "webgl",
+  resizeCanvas: false,
 };
 
 const sketch = ({ context, canvas }) => {
@@ -62,9 +63,17 @@ const sketch = ({ context, canvas }) => {
   // ---------
 
   return {
-    resize({ pixelRatio, viewportWidth, viewportHeight }) {
-      renderer.setPixelRatio(pixelRatio);
+    resize({ canvas, pixelRatio, viewportWidth, viewportHeight }) {
+      const dpr = Math.min(pixelRatio, 2); // Cap DPR scaling to 2x
+
+      canvas.width = viewportWidth * dpr;
+      canvas.height = viewportHeight * dpr;
+      canvas.style.width = viewportWidth + "px";
+      canvas.style.height = viewportHeight + "px";
+
+      renderer.setPixelRatio(dpr);
       renderer.setSize(viewportWidth, viewportHeight);
+
       camera.aspect = viewportWidth / viewportHeight;
       camera.updateProjectionMatrix();
     },
@@ -80,6 +89,7 @@ const sketch = ({ context, canvas }) => {
       material.dispose();
       controls.dispose();
       renderer.dispose();
+      document.body.removeChild(stats.dom);
     },
   };
 };
