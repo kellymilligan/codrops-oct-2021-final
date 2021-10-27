@@ -4,7 +4,7 @@
   "description": "A three.js scene running in canvas-sketch",
   "main": "index.html",
   "scripts": {
-    "start": "canvas-sketch src/index.js --hot",
+    "start": "canvas-sketch src/index.js --hot --output=./output",
     "build": "canvas-sketch src/index.js --build --inline --name output --output=./output"
   },
   "dependencies": {

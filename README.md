@@ -6,6 +6,28 @@ Individual chapter sandboxes for Oct 2021 Codrops article "Creating the Effect o
 
 Changes will be made to this repo first, then ported to the CodeSandbox instances. This will remain the most up-to-date source for these demos.
 
+## Running:
+
+To run these sandboxes, enter the sandbox to run:
+
+```
+$ cd 15
+```
+
+Install dependencies:
+
+```
+npm install
+```
+
+Then run the `start` npm script:
+
+```
+npm run start
+```
+
+You can capture screenshots by using the `cmd`/`ctrl` + `S` key combination when the window has focus. They will be saved in the `./output` directory.
+
 ## Sandboxes:
 
 - `01`: Basic `IcosahedronGeometry` with `MeshNormalMaterial` ([link](https://codesandbox.io/s/01-jk4r3))
