@@ -17,13 +17,13 @@ $ cd 15
 Install dependencies:
 
 ```
-npm install
+$ npm install
 ```
 
 Then run the `start` npm script:
 
 ```
-npm run start
+$ npm run start
 ```
 
 You can capture screenshots by using the `cmd`/`ctrl` + `S` key combination when the window has focus. They will be saved in the `./output` directory.
